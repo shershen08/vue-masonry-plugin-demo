@@ -17,16 +17,43 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+    <h2>Masonry plugin demo</h2>
+    <div v-masonry transition-duration="3s" item-selector=".item" class="masonry-container">
+      <div v-masonry-tile class="item" v-bind:key="index" v-for="(item, index) in blocks">
+        <p>{{item.title}} - {{index}}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+
+import Vue from 'vue'
+//import {VueMasonryPlugin} from '../../node_modules/vue-masonry/src/masonry.plugin';
+import {VueMasonryPlugin} from 'vue-masonry';
+
+Vue.use(VueMasonryPlugin)
+
 export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      blocks: [
+              {
+                title: 'nice block'
+              },
+              {
+                title: 'another shiny block'
+              },
+              {
+                title: 'the last block'
+              },
+      ]
     }
+  },
+  mounted: function(){
+    Vue.redrawVueMasonry();
   }
 }
 </script>
@@ -49,5 +76,13 @@ li {
 
 a {
   color: #42b983;
+}
+.item {
+  border: 1px solid #ac0;
+  width: 200px;
+}
+.masonry-container {
+      width: 55%;
+    margin: 0 auto;
 }
 </style>
