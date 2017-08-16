@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "vue": "^2.3.3",
-    "vue-masonry": "^0.10.5"
+    "vue-masonry": "^0.10.10"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
