@@ -18,6 +18,7 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
     <h2>Masonry plugin demo</h2>
+    <button v-on:click="reDraw">redrawVueMasonry</button>
     <div v-masonry transition-duration="3s" item-selector=".item" class="masonry-container">
       <div v-masonry-tile class="item" v-bind:key="index" v-for="(item, index) in blocks">
         <p>{{item.title}} - {{index}}</p>
@@ -53,7 +54,12 @@ export default {
     }
   },
   mounted: function(){
-    Vue.redrawVueMasonry();
+    this.$redrawVueMasonry();
+  },
+  methods: {
+    reDraw: function(){
+      this.$redrawVueMasonry();
+    }
   }
 }
 </script>
